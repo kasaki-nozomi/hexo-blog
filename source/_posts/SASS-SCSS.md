@@ -1,7 +1,7 @@
 ---
 title: SASS SCSS
 date: 2022-07-09 20:20:22
-description: 在？看看SASS SCSS
+description: CSS 预处理器：SASS/SCSS
 categories:
 - CSS
 tags:
@@ -13,8 +13,6 @@ tags:
 `Sass`是一款强化`CSS`的辅助工具
 
 `SASS`在`CSS`基础上增加了：**变量**`variables`  **嵌套**`nested rules`  **混合**`mixins`  **导入**`inline imports` 等
-
-<!--more-->
 
 ## BEFORE
 `Sass`基于`Ruby`语言开发而成，安装`Sass`前需要安装`Ruby`（`Mac`自带不需要安装）

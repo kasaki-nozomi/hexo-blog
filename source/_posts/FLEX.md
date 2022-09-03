@@ -1,17 +1,13 @@
 ---
 title: FLEX
 date: 2022-07-09 22:22:22
-description: 弹性布局
+description: Flexible Box 弹性布局
 categories:
 - CSS
 tags:
 - CSS
 - FLEX
 ---
-
-`Flexible Box`模型是一种一维的布局模型，为`flexbox`的子元素之间提供了强大的空间分布和对齐能力
-
-<!--more-->
 
 ## Flexible Box 弹性布局
 
@@ -46,7 +42,6 @@ tags:
     flex-direction: row | row-reverse | column | column-reverse;
 }
 ```
-
 - `row`**（默认值）：**水平方向，从左到右
 - `row-reverse`**：**水平方向，从右到左
 - `column`**：**垂直方向，从上到下
@@ -58,7 +53,6 @@ tags:
     flex-wrap: nowrap | wrap | wrap-reverse;
 }
 ```
-
 - `nowrap`**（默认）：**不换行
 - `wrap`**：**换行，第一行在上方
 - `wrap-reverse`**：**换行，第一行在下方
@@ -78,7 +72,6 @@ tags:
 }
 ```
 具体对齐方式与轴的方向有关。假设主轴为从左到右：
-
 - `flex-start`**（默认值）：**左对齐
 - `flex-end`**：**右对齐
 - `center`**：**居中
@@ -93,7 +86,6 @@ tags:
 }
 ```
 具体的对齐方式与交叉轴的方向有关，假设交叉轴从上到下：
-
 - `flex-start`**：**起点对齐
 - `flex-end`**：**终点对齐
 - `center`**：**中点对齐
@@ -111,7 +103,6 @@ tags:
                  stretch;
 }
 ```
-
 - `flex-start`：与交叉轴的起点对齐
 - `flex-end`：与交叉轴的终点对齐
 - `center`：与交叉轴的中点对齐
