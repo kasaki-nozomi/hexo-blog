@@ -8,24 +8,26 @@ tags:
 - CSS
 ---
 
+***
+
 **<font size = 6 color = dd00dd>视差滚动</font>**
 
 ***
 
-**视差滚动 `Parallax Scrolling`** 指多层背景以不同的速度移动，形成立体的运动效果
+<b>视差滚动 `Parallax Scrolling`</b> 指多层背景以不同的速度移动，形成立体的运动效果
 
 实现方式
 
 - `background-attachment`
 - `transform: translate3D`
 ## Background-Attachment
-**`background-attachment`：设置背景图像是否固定或者随着页面的其余部分滚动**
+<b>`background-attachment`：设置背景图像是否固定或者随着页面的其余部分滚动</b>
 
-- **`scroll`** 默认，背景图片随**页面**的滚动而滚动
-- **<font color = dd00dd>`fixed` 背景图片不随着页面的滚动而滚动</font>**
-- **`local`** 背景图片随着**元素内容**的滚动而滚动
-- **`initial`** 设置该属性的默认值
-- **`inherit`** 从父元素继承
+- <b>`scroll`</b> 默认，背景图片随<b>页面</b>的滚动而滚动
+- <b><code style="color:#dd00dd">fixed</code> <font color = dd00dd>背景图片不随着页面的滚动而滚动</font></b>
+- <b>`local`</b> 背景图片随着<b>元素内容</b>的滚动而滚动
+- <b>`initial`</b> 设置该属性的默认值
+- <b>`inherit`</b> 从父元素继承
 
 ```html
 <html>
@@ -67,9 +69,28 @@ div {
 </html>
 ```
 ## Transform: translate3D
-两个属性：
-- **Transform：**对元素进行变换 `2d/3d`，平移 `translate`、旋转 `rotate`、缩放 `scale` 等
-- **<font color="#ddoodd">Perspective：</font>**元素涉及 `3d` 变换时，`perspective` 可以定义看到的 `3D` 立体效果，即空间感
+
+<b><code style="color:#dd00dd">transform-style</code> 属性：</b>
+
+- `flat`：所有子元素在 `2D` 平面呈现
+- `preserve-3d`：所有子元素在 `3D` 空间中呈现
+
+<b><code style="color:#dd00dd">perspective</code> 属性：（做一个透视）</b>
+
+- <b>`translateZ` 的值为 `perspective` 的值</b>时，元素大小为屏幕大小
+- `number`：元素距离视图的距离，以像素计（相当于人离屏幕 `?px` 的位置观看指定元素）
+- `none`：默认值，与 `0` 相同，不设置透视
+
+<b>`perspective-origin: x y` 属性：</b>
+
+- <b>`x`: </b>`left | center | right | length | %` 定义该视图在 `x` 轴上的位置，默认`50%`
+-  <b>`y`: </b>`top | center | bottom | length | %` 定义该视图在 `y` 轴上的位置，默认`50%`
+
+<b>`transform-origin: x y z` 属性：</b>
+
+- <b>`x`:</b> `left | center | right | length | %` 定义视图被置于 `X` 轴何处
+- <b>`y`:</b> `top | center | bottom | length | %` 定义视图被置于 `Y` 轴何处
+- <b>`z`:</b> `length` 定义视图被置于`Z`轴何处
 
 容器设置 `transform-style: preserve-3d` 和 ` perspective: ?px`，使子元素位于 `3D` 空间中
 子元素设置不同的 `transform: translateZ()`，不同元素在 `3D` `Z` 轴方向距离屏幕距离不一样

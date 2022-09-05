@@ -10,13 +10,19 @@ tags:
 - CSS
 ---
 
+***
+
+**<font size = 6 color = dd00dd>DOM 操作与 CSS 选择器</font>**
+
+***
+
 ## DOM
 
 `DOM`（`Document Object Model`——文档对象模型）
 
 ##  DOCUMENT
 ***
-- `document.getElementById(id)`        返回匹配特定`ID`的元素        
+- `document.getElementById(id)`        返回匹配特定ID的元素
 - `document.getElementByClassName(class)`        返回包含所有指定类名的子元素的类数组对象
 - `document.getElementByTagName(tag)`        返回包括所有给定标签名称元素的`HTML`集合
 - `document.querySelector(selectors)`        返回与指定选择器匹配的第一个`Element`对象
