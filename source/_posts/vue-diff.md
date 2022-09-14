@@ -10,7 +10,7 @@ tags:
 
 ***
 
-<font size = 6 color = dd00dd><b>Virtual Dom 与 Vue Diff 与 Key</b></font>
+**<font size = 6 color = dd00dd>Virtual Dom 与 Vue Diff 与 Key</font>**
 
 ***
 
@@ -98,9 +98,9 @@ export function h(type: any, props?: any, children?: any) {
 
 算法 <code style="color:#dd00dd"><b>updateChildren</b></code> 采用双端比较，分别从新旧 `Vnode` 的两端开始：
 - 比较 `oldVNode` 与 `newVNode` 节点的 `startIndex` 与 `startIndex` 
-- 比较 `oldVNode` 与 `newVNode` 节点的`endIndex` 与 `endIndex`
-- 比较 `oldVNode` 与 `newVNode` 节点的`startIndex` 与 `endIndex` 
-- 比较 `oldVNode` 与 `newVNode` 节点的`endIndex` 与 `startIndex` 
+- 比较 `oldVNode` 与 `newVNode` 节点的 `endIndex` 与 `endIndex`
+- 比较 `oldVNode` 与 `newVNode` 节点的 `startIndex` 与 `endIndex` 
+- 比较 `oldVNode` 与 `newVNode` 节点的 `endIndex` 与 `startIndex` 
 - 若上面四种比较有一项相同则 <code style="color:#dd00dd"><b>patchVnode</b></code> ，同时移动 `oldVNode` 与 `newVNode` 的开始结束索引
 - 若上面四种比较都不通过，则说明没有相同的节点可以复用，则会做下面两件事（看情况）：
 	- 通过 `key` 值，找到与 `newNode` 的 `startIndex` 一致的旧的 `VNode` 节点，再进行 <code style="color:#dd00dd"><b>patchVnode</b></code>
