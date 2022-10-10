@@ -6,7 +6,7 @@ categories:
 -  JavaScript
 tags:
 -  JavaScript
--  Graph
+-  数据结构
 ---
 
 **<font color=dd00dd size=5>用 JS 实现图的相关算法（但是可能会有些大问题）</font>**

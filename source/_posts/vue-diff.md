@@ -90,7 +90,7 @@ export function h(type: any, props?: any, children?: any) {
 
 在 <code style="color:#dd00dd"><b>patch</b></code> 方法中通过 <code style="color:#dd00dd"><b>sameVnode</b></code> 方法判断节点类型与 **`Key`** 值是否相同，如果节点类型与 **`Key`** 值不同，直接删掉原节点，再创建并插入新节点，不会再比较这个节点以后的子节点，若相同，则通过 <code style="color:#dd00dd"><b>patchVnode</b></code> 比较两个节点的内容与子节点
 
-<img width="800" src="https://raw.githubusercontent.com/kasaki-nozomi/Sources/main/Images/image-11.png" />
+<img width="800" src="https://raw.githubusercontent.com/kasaki-nozomi/Sources/main/Images/image-11.png"/>
 
 <b>递归比较子节点：</b>
 
