@@ -1,0 +1,88 @@
+---
+title: 图片懒加载
+date: 2022-11-02 19:20:19
+description: JS 实现图片懒加载的效果（拖！就硬拖！）
+categories:
+- JavaScript
+tags:
+- HTML
+- JavaScript
+---
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script>hljs.highlightAll()</script>
+</head>
+
+<body>
+    <p style='font-size:26px; font-weight: bold; color:#dd00dd'>看看效果：</p>
+
+    <div class="container">
+        <img src="https://raw.githubusercontent.com/kasaki-nozomi/Sources/main/Images/loading04.gif"
+             data-src="https://raw.githubusercontent.com/kasaki-nozomi/Sources/main/Images/m.png">
+        <img src="https://raw.githubusercontent.com/kasaki-nozomi/Sources/main/Images/loading04.gif"
+             data-src="https://raw.githubusercontent.com/kasaki-nozomi/Sources/main/Images/b.png">
+        <img src="https://raw.githubusercontent.com/kasaki-nozomi/Sources/main/Images/loading04.gif"
+             data-src="https://raw.githubusercontent.com/kasaki-nozomi/Sources/main/Images/u.png">
+        <img src="https://raw.githubusercontent.com/kasaki-nozomi/Sources/main/Images/loading04.gif"
+             data-src="https://raw.githubusercontent.com/kasaki-nozomi/Sources/main/Images/k.png">
+        <img src="https://raw.githubusercontent.com/kasaki-nozomi/Sources/main/Images/loading04.gif"
+             data-src="https://raw.githubusercontent.com/kasaki-nozomi/Sources/main/Images/mm.png">
+        <img src="https://raw.githubusercontent.com/kasaki-nozomi/Sources/main/Images/loading04.gif"
+             data-src="https://raw.githubusercontent.com/kasaki-nozomi/Sources/main/Images/mb.png">
+        <img src="https://raw.githubusercontent.com/kasaki-nozomi/Sources/main/Images/loading04.gif"
+             data-src="https://raw.githubusercontent.com/kasaki-nozomi/Sources/main/Images/bb.png">
+        <img src="https://raw.githubusercontent.com/kasaki-nozomi/Sources/main/Images/loading04.gif"
+             data-src="https://raw.githubusercontent.com/kasaki-nozomi/Sources/main/Images/kk.png">
+        <img src="https://raw.githubusercontent.com/kasaki-nozomi/Sources/main/Images/loading04.gif"
+             data-src="https://raw.githubusercontent.com/kasaki-nozomi/Sources/main/Images/uu.png">
+    </div>
+
+    <p style='font-size:26px; font-weight: bold; color:#dd00dd'>代码：</p>
+
+    <pre><code class="language-html">&lt!DOCTYPE&nbsphtml&gt&#10&lthtml&gt&#10&ltbody&gt&#10&ltdiv&nbspclass='container'&gt&#10&nbsp&nbsp&nbsp&nbsp&ltimg&nbspsrc='https://raw.githubusercontent.com/kasaki-nozomi/Sources/main/Images/loading04.gif'&nbsp&#10&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspdata-src='https://raw.githubusercontent.com/kasaki-nozomi/Sources/main/Images/m.png'&gt&#10&nbsp&nbsp&nbsp&nbsp&ltimg&nbspsrc='https://raw.githubusercontent.com/kasaki-nozomi/Sources/main/Images/loading04.gif'&#10&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspdata-src='https://raw.githubusercontent.com/kasaki-nozomi/Sources/main/Images/b.png'&gt&#10&nbsp&nbsp&nbsp&nbsp&ltimg&nbspsrc='https://raw.githubusercontent.com/kasaki-nozomi/Sources/main/Images/loading04.gif'&#10&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspdata-src='https://raw.githubusercontent.com/kasaki-nozomi/Sources/main/Images/u.png'&gt&#10&nbsp&nbsp&nbsp&nbsp&ltimg&nbspsrc='https://raw.githubusercontent.com/kasaki-nozomi/Sources/main/Images/loading04.gif'&#10&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspdata-src='https://raw.githubusercontent.com/kasaki-nozomi/Sources/main/Images/k.png'&gt&#10&nbsp&nbsp&nbsp&nbsp&ltimg&nbspsrc='https://raw.githubusercontent.com/kasaki-nozomi/Sources/main/Images/loading04.gif'&#10&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspdata-src='https://raw.githubusercontent.com/kasaki-nozomi/Sources/main/Images/mm.png'&gt&#10&nbsp&nbsp&nbsp&nbsp&ltimg&nbspsrc='https://raw.githubusercontent.com/kasaki-nozomi/Sources/main/Images/loading04.gif'&#10&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspdata-src='https://raw.githubusercontent.com/kasaki-nozomi/Sources/main/Images/mb.png'&gt&#10&nbsp&nbsp&nbsp&nbsp&ltimg&nbspsrc='https://raw.githubusercontent.com/kasaki-nozomi/Sources/main/Images/loading04.gif'&#10&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspdata-src='https://raw.githubusercontent.com/kasaki-nozomi/Sources/main/Images/bb.png'&gt&#10&nbsp&nbsp&nbsp&nbsp&ltimg&nbspsrc='https://raw.githubusercontent.com/kasaki-nozomi/Sources/main/Images/loading04.gif'&#10&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspdata-src='https://raw.githubusercontent.com/kasaki-nozomi/Sources/main/Images/kk.png'&gt&#10&nbsp&nbsp&nbsp&nbsp&ltimg&nbspsrc='https://raw.githubusercontent.com/kasaki-nozomi/Sources/main/Images/loading04.gif'&#10&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspdata-src='https://raw.githubusercontent.com/kasaki-nozomi/Sources/main/Images/uu.png'&gt&#10&lt/div&gt&#10&lt/body&gt&#10&ltscript&gt&#10&nbsp&nbsp&nbsp&nbspconst&nbspimgs&nbsp=&nbspdocument.querySelectorAll('img')&#10&nbsp&nbsp&nbsp&nbspfunction&nbsplazyLoad()&nbsp{&#10&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspconst&nbspscrollTop&nbsp=&nbspdocument.body.scrollTop&nbsp||&nbspdocument.documentElement.scrollTop&#10&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspconst&nbspwindowHeight&nbsp=&nbspwindow.innerHeight&nbsp||&nbspdocument.documentElement.clientWidth&#10&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspfor&nbsp(let&nbspi&nbsp=&nbsp0;&nbspi&nbsp&lt&nbspimgs.length;&nbspi++)&nbsp{&#10&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspconst&nbspimgsrc&nbsp=&nbspimgs[i].getAttribute('data-src')&#10&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspif&nbsp(imgsrc)&nbsp{&#10&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspif&nbsp(imgs[i].offsetTop&nbsp&lt&nbspscrollTop&nbsp+&nbspwindowHeight)&nbsp{&#10&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspimgs[i].src&nbsp=&nbspimgsrc&#10&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspimgs[i].removeAttribute('data-src')&#10&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp}&#10&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp}&#10&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp}&#10&nbsp&nbsp&nbsp&nbsp}&#10&nbsp&nbsp&nbsp&nbspfunction&nbspthrottling(func,&nbspwait&nbsp=&nbsp500)&nbsp{&#10&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsplet&nbsptimeout&#10&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspreturn&nbspfunction&nbsp()&nbsp{&#10&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsplet&nbspcontext&nbsp=&nbspthis&#10&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsplet&nbspargs&nbsp=&nbsparguments&#10&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspif&nbsp(!timeout)&nbsp{&#10&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsptimeout&nbsp=&nbspsetTimeout(function&nbsp()&nbsp{&#10&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsptimeout&nbsp=&nbspnull&#10&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspfunc.apply(context,&nbspargs)&#10&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp},&nbspwait)&#10&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp}&#10&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp}&#10&nbsp&nbsp&nbsp&nbsp}&#10&nbsp&nbsp&nbsp&nbspwindow.onload&nbsp=&nbspfunction&nbsp()&nbsp{&nbsplazyLoad()&nbsp}&#10&nbsp&nbsp&nbsp&nbspwindow.onscroll&nbsp=&nbspthrottling(lazyLoad,&nbsp1000)&#10&lt/script&gt&#10&ltstyle&gt&#10&nbsp&nbsp&nbsp&nbspimg&nbsp{&nbspwidth:&nbsp100%&nbsp}&#10&lt/style&gt&#10&lt/html&gt</code></pre>
+    
+    <script>
+        const imgs = document.querySelectorAll('img')
+        function lazyLoad() {
+            const scrollTop = document.body.scrollTop || document.documentElement.scrollTop
+            const windowHeight = window.innerHeight || document.documentElement.clientWidth
+            for (let i = 0; i < imgs.length; i++) {
+                const imgsrc = imgs[i].getAttribute('data-src')
+                if (imgsrc) {
+                    if (imgs[i].offsetTop < scrollTop + windowHeight) {
+                        imgs[i].src = imgsrc
+                        imgs[i].removeAttribute('data-src')
+                    }
+                }
+            }
+        }
+        function throttling(func, wait = 500) {
+            let timeout
+            return function () {
+                let context = this
+                let args = arguments
+                if (!timeout) {
+                    timeout = setTimeout(function () {
+                        timeout = null
+                        func.apply(context, args)
+                    }, wait)
+                }
+            }
+        }
+        window.onload = function () { lazyLoad() }
+        window.onscroll = throttling(lazyLoad, 1000)
+    </script>
+    <style>
+        img {
+            width: 100%;
+            margin: 0.2rem 0 !important;
+            max-width: 100% !important;
+        }
+    </style>
+</body>
+
+</html>
